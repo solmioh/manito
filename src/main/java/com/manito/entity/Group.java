@@ -3,9 +3,6 @@ package com.manito.entity;
 import com.manito.Status;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -30,7 +27,7 @@ public class Group extends BaseEntity {
     private Status status;
 
     @OneToMany(mappedBy = "group")
-    private List<Member> members = new ArrayList<>();
+    private final List<Member> members = new ArrayList<>();
 
     public void changeStatus(Status status) {
         this.status = status;

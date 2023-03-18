@@ -21,7 +21,6 @@ public class GroupQueryService {
 
     public List<Group> findByStatus(Status status) {
         List<Group> byStatus = groupRepository.findByStatus(status);
-        System.out.println("groupRepository.findByStatus(status) = " + byStatus);
         return byStatus;
     }
 }

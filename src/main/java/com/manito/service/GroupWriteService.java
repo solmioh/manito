@@ -1,6 +1,7 @@
 package com.manito.service;
 
 import com.manito.Status;
+import com.manito.controller.response.GroupDto;
 import com.manito.entity.Group;
 import com.manito.repository.GroupRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +18,15 @@ public class GroupWriteService {
     private final GroupQueryService groupQueryService;
     private final GroupRepository groupRepository;
 
-    public HttpStatus create(Group group) {
+    public GroupDto create(Group group) {
         var savedGroup = groupRepository.save(group);
 
-        if(savedGroup != null) {
-            return HttpStatus.OK;
-        }
-
-        return HttpStatus.INTERNAL_SERVER_ERROR;
+        return GroupDto.builder()
+                .groupId(savedGroup.getId())
+                .adminId(group.getAdminId())
+                .endDate(group.getEndDate())
+                .participants(group.getParticipants())
+                .build();
     }
 
     @Transactional

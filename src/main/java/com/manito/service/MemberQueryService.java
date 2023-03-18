@@ -18,8 +18,17 @@ public class MemberQueryService {
         return memberRepository.search(id);
     }
 
+    public List<MemberManitoGroupDto> findMemberManitoGroups(String groupId) {
+        return memberRepository.searchAll(groupId);
+    }
+
     public Member findMember(Long id) {
         return memberRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Not Found"));
+    }
+
+    public Member findByGroupIdAndNickname(String groupId, String nickname) {
+        return memberRepository.findByGroupIdAndNickname(groupId, nickname)
                 .orElseThrow(() -> new RuntimeException("Not Found"));
     }
 }

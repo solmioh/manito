@@ -1,6 +1,5 @@
 package com.manito;
 
-import com.manito.entity.Group;
 import com.manito.service.GroupQueryService;
 import com.manito.service.GroupWriteService;
 import lombok.RequiredArgsConstructor;
